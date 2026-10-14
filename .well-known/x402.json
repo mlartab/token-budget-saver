@@ -1,0 +1,38 @@
+{
+  "x402Version": 2,
+  "service": "token-budget-saver",
+  "description": "Fetches a web page server-side and returns a clean text extract with token-count estimates. Strips scripts, styles, navigation, ads and boilerplate. Served in JSON. $0.002 per call.",
+  "resources": [
+    {
+      "url": "https://marketplace-service-template-production-e603.up.railway.app/api/digest",
+      "method": "GET",
+      "description": "Fetch a URL and return a token-efficient extract",
+      "mimeType": "application/json",
+      "price": {
+        "amount": "2000",
+        "asset": "USDC",
+        "decimals": 6
+      },
+      "inputSchema": {
+        "type": "http",
+        "method": "GET",
+        "queryParams": {
+          "url": "https://example.com"
+        }
+      },
+      "outputSchema": {
+        "type": "json",
+        "example": {
+          "status": "success",
+          "url": "https://news.ycombinator.com",
+          "contentLength": 42000,
+          "timestamp": "2026-10-14T12:00:00.000Z",
+          "payment": {
+            "settled": true,
+            "txHash": "0x..."
+          }
+        }
+      }
+    }
+  ]
+}
